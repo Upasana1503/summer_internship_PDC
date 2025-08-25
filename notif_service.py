@@ -2,14 +2,19 @@ import smtplib
 from email.message import EmailMessage
 from pymongo import MongoClient
 
-MONGO_URI = "mongodb+srv://mandeepraina0:ek1ZhuFqDAiEzFa3@cluster0.crni6eo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+mongo_uri = "mongodb+srv:***"
+email_user = "***"
+db_name = "***"
+email_pass = "***"
+sender_email = "***"
 
-DB_NAME = "notification_db"
-
+MONGO_URI = mongo_uri
+DB_NAME = db_name
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_USER = "mandeepraina0@gmail.com"
-EMAIL_PASS = "ioekjzkdxyakakpp"
+EMAIL_USER = email_user
+EMAIL_PASS = email_pass
+
 
 client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
@@ -53,7 +58,7 @@ def notify(to, notification_type, template_id, arguments):
 
 
 notify(
-    to="upasanasahukara@gmail.com",
+    to=sender_email,
     notification_type="email",
     template_id=101,
     arguments={
